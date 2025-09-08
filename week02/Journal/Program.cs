@@ -15,10 +15,11 @@ class Program
         {
             MenuSelection();
             input = Console.ReadLine();
-
+            //switch reacts to input
             switch (input)
             {
                 case "1":
+
                     System.Console.WriteLine("Yould you like a prompt? (y/n)");
                     //ask for an entry and enter the entry
                     string aff = Console.ReadLine().ToLower();
@@ -34,18 +35,22 @@ class Program
                     if (aff == "y") journal.AddEntry(entry._entry);
                     break;
                 case "2":
+                    //desplay all journal entries
                     System.Console.WriteLine("Displaying all Journal Entries");
                     journal.DisplayAll();
                     break;
                 case "3":
+                    //delete one entry
                     journal.DeleteAnEntry();
                     break;
                 case "4":
+                    //delete all entries
                     System.Console.WriteLine("Are you sure you want to delete all your entries? (y/n)");
                     aff = Console.ReadLine();
                     if (aff == "y") journal.DeleteAllEntries();
                     break;
                 case "0":
+                    //save to file than input is true so ends the loop
                     journal.SaveToFile();
                     break;
 

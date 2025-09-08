@@ -5,12 +5,14 @@ namespace week02.Journal
 {
     public class Journal
     {
+        //instates the jornal list for manipulation in later methods.
         List<string> journalEntries = new List<string>();
 
         public void AddEntry(string _entry)
         {
             journalEntries.Add(_entry);
         }
+        //display all the journal entries.
         public void DisplayAll()
         {
             int count = 1;
@@ -20,11 +22,13 @@ namespace week02.Journal
                 count++;
             }
         }
+        //saves the journal entry to the JSON when called
         public void SaveToFile()
         {
             string jsonString = JsonSerializer.Serialize(journalEntries);
             File.WriteAllText("journalEntries.json", jsonString);
         }
+        //Loads the json when called and puts it to the journal list. If the json is empty makes the list empty.
         public void LoadFromFile()
         {
             string filePath = "journalEntries.json";
@@ -34,6 +38,8 @@ namespace week02.Journal
                 journalEntries = JsonSerializer.Deserialize<List<string>>(jsonString) ?? new List<string>();
             }
         }
+
+        //deletes a singular entry after showing the user a list of all the entries.
         public void DeleteAnEntry()
         {
             DisplayAll();
@@ -46,6 +52,7 @@ namespace week02.Journal
             }
             catch { }
         }
+        //deletes all the entries in the journal class when called.
         public void DeleteAllEntries()
         {
             journalEntries.Clear();

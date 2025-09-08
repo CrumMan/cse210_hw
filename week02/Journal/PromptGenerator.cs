@@ -16,6 +16,7 @@ namespace week02.Journal
         //credit to the following website for the list above.  https://www.justanothermummyblog.com/journaling-101-how-to-start-and-why-journal-prompts/
         public string GetRandomPrompt()
         {
+            //creates random int than places it with the prompt.
             Random random = new Random();
             int ranint = random.Next(0, 9);
             string prompt = _prompts[ranint];
