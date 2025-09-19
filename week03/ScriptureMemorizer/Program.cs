@@ -1,9 +1,13 @@
 using System;
-
-class Program
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.XPath;
+namespace Scripture_Memorizer
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
+        static void Main(string[] args)
+        {
+            Words words = new();
+        }
     }
 }
