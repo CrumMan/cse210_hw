@@ -7,6 +7,7 @@ using System.Text.Json.Nodes;
 namespace Scripture_Memorizer
 {
     public class Scripture
+
     {
         //Excactly what this class will hold as it's given scripture after the refrence is made
         private string scripture;
