@@ -1,9 +1,15 @@
 using System;
-
-class Program
+namespace Homework
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello World! This is the Homework Project.");
+        static void Main(string[] args)
+        {
+            MathAssignment StudentAssignment1 = new MathAssignment("Roberto Rodreguez", "Fractions", "7.3", "8-19");
+            Console.WriteLine("\n\n");
+            WritingAssignment writingAssignment = new WritingAssignment("Mary Waters", "European History", "The Causes of World War II by Mary Waters");
+            Console.WriteLine("\n\n");
+
+        }
     }
 }
