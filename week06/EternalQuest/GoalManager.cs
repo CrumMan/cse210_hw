@@ -22,7 +22,7 @@ namespace EternalQuest
             Start();
             SaveGoals();
         }
-        public void Start()
+        private void Start()
         {
             string input = "";
             while (input != "0")
@@ -61,7 +61,7 @@ namespace EternalQuest
             SaveGoals();
             Console.Clear();
         }
-        public void DeleteGoal()
+        private void DeleteGoal()
         {
 
             if (GetGoals().Count < 1)
@@ -84,7 +84,7 @@ namespace EternalQuest
             RemoveGoal(index);
 
         }
-        public void ListGoalDetails()
+        private void ListGoalDetails()
         {
             List<Goal> goals = GetGoals();
             if (goals.Count > 0)
@@ -101,7 +101,7 @@ namespace EternalQuest
                 System.Console.WriteLine("You have no goals! Create a goal to view your goals!");
             }
         }
-        public void CreateGoal()
+        private void CreateGoal()
         {
 
             string input = CreateGoalMenu();
@@ -150,7 +150,7 @@ namespace EternalQuest
             }
 
         }
-        public void RecordEvent()
+        private void RecordEvent()
         {
             ListGoalDetails();
             if (GetGoals().Count >= 1)
@@ -177,7 +177,7 @@ namespace EternalQuest
                 }
             }
         }
-        public void SaveGoals()
+        private void SaveGoals()
         {
             string filepath = "goals.txt";
             List<string> lines = new List<string>();
@@ -198,7 +198,7 @@ namespace EternalQuest
             File.WriteAllLines(filepath, lines);
 
         }
-        public void LoadGoals()
+        private void LoadGoals()
         {
             string filepath = "goals.txt";
             if (!File.Exists(filepath))
@@ -249,15 +249,15 @@ namespace EternalQuest
             }
             System.Console.WriteLine("File Loaded");
         }
-        public string DisplayMenu()
+        private string DisplayMenu()
         {
             return _menu;
         }
-        public List<Goal> GetGoals()
+        private List<Goal> GetGoals()
         {
             return _goals;
         }
-        public int GetPoints()
+        private int GetPoints()
         {
             return playerPoints;
         }
@@ -283,11 +283,11 @@ namespace EternalQuest
 
         }
 
-        public void AddGoal(Goal goal)
+        private void AddGoal(Goal goal)
         {
             _goals.Add(goal);
         }
-        public void RemoveGoal(int index)
+        private void RemoveGoal(int index)
         {
             _goals.RemoveAt(index);
         }
@@ -299,11 +299,11 @@ namespace EternalQuest
         {
             _level = playerPoints / 1000;
         }
-        public string TypesOfGoals()
+        private string TypesOfGoals()
         {
             return "1. A Simple goal \n2. A Checklist Goal \n3. An eternal goal";
         }
-        public string GetMenuOption()
+        private string GetMenuOption()
         {
             System.Console.WriteLine($"Level:{GetLevel()} \nPoints:{GetPoints()} \n{DisplayMenu()}");
             string input = Console.ReadLine();
@@ -316,7 +316,7 @@ namespace EternalQuest
             }
             return input;
         }
-        public string CreateGoalMenu()
+        private string CreateGoalMenu()
         {
             System.Console.WriteLine(TypesOfGoals());
             string input = Console.ReadLine();
