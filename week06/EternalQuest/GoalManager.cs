@@ -1,16 +1,20 @@
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace EternalQuest
 {
     public class GoalManager
     {
-        private string _menu = "\n  1.View your Goals \n  2.Report on your Goals\n  3.Create a Goal \n  4.Delete Goal\n  0.Save and Exit";
+        private string _menu = "\n  1.View your Goals \n  2.Report on your Goals\n  3.Create a Goal \n  4.Delete Goal\n  42.To Reset Points (For it is the answer to the universe.)\n  0.Save and Exit";
         private List<Goal> _goals = new List<Goal>();
         EternalGoal eternalGoal;
         ChecklistGoal checklistGoal;
         SimpleGoal simpleGoal;
         int playerPoints = 0;
+
+        int _level;
+
 
         public GoalManager()
         {
@@ -52,6 +56,7 @@ namespace EternalQuest
                     Console.ReadKey();
                     Console.Clear();
                 }
+                else if (input == "42") ClearPlayerPoints();
             }
             SaveGoals();
             Console.Clear();
@@ -72,6 +77,7 @@ namespace EternalQuest
             while (number > GetGoals().Count)
             {
                 System.Console.WriteLine("You entered a number that was too Large! ");
+                input = Console.ReadLine();
                 number = GetNumber(input);
             }
             int index = number - 1;
@@ -105,7 +111,7 @@ namespace EternalQuest
                 string name = Console.ReadLine();
                 System.Console.WriteLine("What is the description your goal?");
                 string description = Console.ReadLine();
-                System.Console.WriteLine("How Many Points is your goal worth?");
+                System.Console.WriteLine("How Many Points is your goal worth?\n (A level is worth 1000 points!)");
                 string pointsS = Console.ReadLine();
                 int points = GetNumber(pointsS);
                 simpleGoal = new SimpleGoal(name, description, points);
@@ -255,9 +261,26 @@ namespace EternalQuest
         {
             return playerPoints;
         }
-        public void SetPlayerPoints(int _playerPoints)
+        private void ClearPlayerPoints()
         {
-            playerPoints += _playerPoints;
+            playerPoints = 0;
+            SetLevel();
+        }
+        private void SetPlayerPoints(int _playerPoints)
+        {
+            int currentPoints = playerPoints;
+            int currentLevel = GetLevel();
+            int newPoints = currentPoints + _playerPoints;
+            playerPoints = newPoints;
+            SetLevel();
+            int newLevel = GetLevel();
+            if (newLevel > currentLevel && currentLevel != 0)
+            {
+                int amountOfLevels = newLevel - currentLevel;
+                System.Console.WriteLine($"Congragulations! You leveled up {amountOfLevels} time(s)!");
+            }
+
+
         }
 
         public void AddGoal(Goal goal)
@@ -268,16 +291,24 @@ namespace EternalQuest
         {
             _goals.RemoveAt(index);
         }
+        private int GetLevel()
+        {
+            return _level;
+        }
+        private void SetLevel()
+        {
+            _level = playerPoints / 1000;
+        }
         public string TypesOfGoals()
         {
             return "1. A Simple goal \n2. A Checklist Goal \n3. An eternal goal";
         }
         public string GetMenuOption()
         {
-            System.Console.WriteLine($"You have {GetPoints()} Points! \n{DisplayMenu()}");
+            System.Console.WriteLine($"Level:{GetLevel()} \nPoints:{GetPoints()} \n{DisplayMenu()}");
             string input = Console.ReadLine();
             int number = GetNumber(input);
-            while (number > 4)
+            while (number > 4 && number != 42)
             {
                 Console.Clear();
                 System.Console.WriteLine($"This is not a proper input for the menu response. Please enter {DisplayMenu()}");

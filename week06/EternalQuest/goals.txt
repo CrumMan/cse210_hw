@@ -1,3 +1,1 @@
-Points:17400
-1|Go to the temple|Go to the temple as a family|2000|True
-3|Kiss my wife|To make her feel loved, I will kiss my wife every morning.|400|False
+Points:0

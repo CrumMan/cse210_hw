@@ -13,6 +13,7 @@ namespace EternalQuest
             _target = bonusRepitions;
             _bonus = bonusPoints;
         }
+
         public override string GetStringRepresentation()
         {
             if (GetComplete())
