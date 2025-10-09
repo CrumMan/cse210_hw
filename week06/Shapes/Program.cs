@@ -1,9 +1,27 @@
 using System;
-
-class Program
+using System.Drawing;
+namespace shapes
 {
-    static void Main(string[] args)
+
+    class Program
     {
-        Console.WriteLine("Hello World! This is the Shapes Project.");
+        static void Main(string[] args)
+        {
+            Square square = new Square();
+            Rectangle rectangle = new Rectangle();
+            Circle circle = new Circle();
+            List<Shape> shapes = [];
+            square.setColor("Blue");
+            rectangle.setColor("Red");
+            circle.setColor("Green");
+            shapes.Add(circle);
+            shapes.Add(square);
+            shapes.Add(rectangle);
+            foreach (Shape shape in shapes)
+            {
+                System.Console.WriteLine($"Shape \nColor: {shape.GetColor()} \nArea:{shape.GetArea()}\n");
+
+            }
+        }
     }
 }
