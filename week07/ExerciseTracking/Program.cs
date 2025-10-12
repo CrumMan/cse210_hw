@@ -9,7 +9,7 @@ namespace ExercizeTracking
         {
             List<Athlete> athletes = new List<Athlete>();
             Athlete John = new("John Marston", "Miles");
-            Athlete Kara = new("Kara Croft", "Kilometers");
+            Athlete Kara = new("Laura Croft", "Kilometers");
             Athlete JT = new("JT Pyle", "Miles");
             John.AddRunningWorkout(120, 6);
             JT.AddSwimmingWorkout(120, 65);
